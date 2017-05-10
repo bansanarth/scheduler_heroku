@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'task_detail',
@@ -7,4 +7,10 @@ import { FormControl } from '@angular/forms';
 })
 export class TaskDetailComponent1 {
     name = new FormControl();
+}
+
+export class TaskDetailComponent2 {
+    taskForm = new FormGroup({
+        name: new FormControl()
+    });
 }
