@@ -1,16 +1,38 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { dynoSizes, frequencies } from './data_model';
 
 @Component({
     selector: 'task_detail',
     templateUrl: './task_detail.component.html'
 })
-export class TaskDetailComponent1 {
-    name = new FormControl();
-}
 
-export class TaskDetailComponent2 {
-    taskForm = new FormGroup({
-        name: new FormControl()
-    });
+
+export class TaskDetailComponent {
+
+    taskForm: FormGroup;
+    dynoSizes = dynoSizes;
+    frequencies = frequencies;
+
+    constructor(private fb: FormBuilder) {
+        this.createForm();
+    }
+
+    createForm() {
+        this.taskForm = this.fb.group({ 
+            name: ['', Validators.required],
+            properties: this.fb.group({ 
+                dynoSize: '',
+                frequency: '',
+                lastRun: '',
+                nextDue: ''
+            }),
+            
+        });
+    }
+
+
+
+
+
 }

@@ -7,7 +7,11 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 
 
-import { TaskDetailComponent1 } from './components/task_detail/task_detail.component';
+import { Observable } from 'rxjs/Observable';
+
+import { TaskDetailComponent } from './components/task_detail/task_detail.component';
+
+
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -18,7 +22,7 @@ import { TaskDetailComponent1 } from './components/task_detail/task_detail.compo
         
         HomeComponent,
 
-        TaskDetailComponent1
+        TaskDetailComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -29,9 +33,9 @@ import { TaskDetailComponent1 } from './components/task_detail/task_detail.compo
             { path: 'home', component: HomeComponent },
            
 
-            { path: 'task_detail', component: TaskDetailComponent1},
+            { path: 'task_detail', component: TaskDetailComponent},
 
-            { path: '**', redirectTo: 'task_detail' }
+            { path: '**', redirectTo: 'home' }
         ])
     ]
 })
