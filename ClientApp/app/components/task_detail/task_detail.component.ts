@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { dynoSizes, frequencies } from './data_model';
+import { HTask, dynoSizes, frequencies } from './data_model';
 
 @Component({
     selector: 'task_detail',
@@ -8,7 +8,9 @@ import { dynoSizes, frequencies } from './data_model';
 })
 
 
-export class TaskDetailComponent {
+export class TaskDetailComponent implements OnChanges{
+    @Input() htask: HTask;
+
 
     taskForm: FormGroup;
     dynoSizes = dynoSizes;
@@ -31,7 +33,12 @@ export class TaskDetailComponent {
         });
     }
 
-
+    ngOnChanges() { // <-- wrap patchValue in ngOnChanges
+        this.taskForm.reset();
+        this.taskForm.patchValue({
+            name: this.htask.name
+        });
+    }
 
 
 
